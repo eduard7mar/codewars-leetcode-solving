@@ -277,6 +277,14 @@ function rentalCarCost(d) {
   return d >= 7 ? (40 * d - 50) : (d >= 3) ? (40 * d - 20) : 40 * d;
 }
 
+// Write function RemoveExclamationMarks which removes all exclamation marks from a given string.
+
+// Solution
+function removeExclamationMarks(s) {
+  return s.replace(/\!/g, "");
+}
+
+
 
 
 
