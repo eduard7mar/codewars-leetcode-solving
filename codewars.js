@@ -107,7 +107,7 @@ function squareUp(n) {
 // "I love arrays they are my favorite" ==> ["I", "love", "arrays", "they", "are", "my", "favorite"]
 
 // Solution
-function stringToArray(string){
+function stringToArray(string) {
   return string.split(" ");
 }
 
@@ -117,8 +117,10 @@ function stringToArray(string){
 // •	If he doesn't get 10 hoops, return the string "Keep at it until you get it".
 
 // Solution
-function hoopCount (n) {
-   return n >= 10 ? "Great, now move on to tricks" : "Keep at it until you get it";  
+function hoopCount(n) {
+  return n >= 10
+    ? "Great, now move on to tricks"
+    : "Keep at it until you get it";
 }
 
 // Complete the solution so that it reverses all of the words within the string passed in.
@@ -127,7 +129,7 @@ function hoopCount (n) {
 // "The greatest victory is that which requires no battle" --> "battle no requires which that is victory greatest The"
 
 // Solution
-function reverseWords(str){
+function reverseWords(str) {
   return str.split(" ").reverse().join(" ");
 }
 
@@ -144,7 +146,7 @@ function greet(name) {
 // Given a non-negative integer, 3 for example, return a string with a murmur: "1 sheep...2 sheep...3 sheep...". Input will always be valid, i.e. no negative integers.
 
 // Solution
-var countSheep = function(num) {
+var countSheep = function (num) {
   if (num === 0) {
     return "";
   }
@@ -153,13 +155,15 @@ var countSheep = function(num) {
     result.push(`${i} sheep...`);
   }
   return result.join("");
-}
+};
 
-var countSheep = function (num){
+var countSheep = function (num) {
   let str = "";
-  for(let i = 1; i <= num; i++) { str+= `${i} sheep...`; }
+  for (let i = 1; i <= num; i++) {
+    str += `${i} sheep...`;
+  }
   return str;
-}
+};
 
 // Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
 // Examples input/output:
@@ -171,18 +175,18 @@ var countSheep = function (num){
 
 // Solution
 function XO(str) {
-    let array = str.toLowerCase().split("");
-    let x = 0;
-    let y = 0;
-    for (let i = 0; i < array.length; i++) {
-      if (array[i].includes("x")) {
-        x++;
-      } 
-      if (array[i].includes("o")) {
-        y++;
-      }
+  let array = str.toLowerCase().split("");
+  let x = 0;
+  let y = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].includes("x")) {
+      x++;
     }
-    return x === y ? true : false;
+    if (array[i].includes("o")) {
+      y++;
+    }
+  }
+  return x === y ? true : false;
 }
 
 // In this simple exercise, you will build a program that takes a value, integer , and returns a list of its multiples up to another value, limit . If limit is a multiple of integer, it should be included as well. There will only ever be positive integers passed into the function, not consisting of 0. The limit will always be higher than the base.
@@ -221,7 +225,7 @@ function arrayPlusArray(arr1, arr2) {
 // Solution
 function points(games) {
   let total = 0;
-  games.map(game => {
+  games.map((game) => {
     if (game[0] === game[2]) {
       total += 1;
     } else if (game[0] > game[2]) {
@@ -239,9 +243,11 @@ function points(games) {
 
 // Solution
 String.prototype.toJadenCase = function () {
-  return this.split(' ').map(word => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  }).join(' ');
+  return this.split(" ")
+    .map((word) => {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
 };
 
 // You are given the length and width of a 4-sided polygon. The polygon can either be a rectangle or a square.
@@ -252,7 +258,7 @@ String.prototype.toJadenCase = function () {
 // Note: for the purposes of this kata you will assume that it is a square if its length and width are equal, otherwise it is a rectangle.
 
 // Solution
-const areaOrPerimeter = function(l, w) {
+const areaOrPerimeter = function (l, w) {
   return l === w ? l * w : (l + w) * 2;
 };
 
@@ -263,8 +269,8 @@ const areaOrPerimeter = function(l, w) {
 // otherwise	'Hello guest'
 
 // Solution
-function greet (name, owner) {
-  return name === owner ? 'Hello boss' : 'Hello guest';
+function greet(name, owner) {
+  return name === owner ? "Hello boss" : "Hello guest";
 }
 
 // After a hard quarter in the office you decide to get some rest on a vacation. So you will book a flight for you and your girlfriend and try to leave all the mess behind you.
@@ -274,7 +280,7 @@ function greet (name, owner) {
 
 // Solution
 function rentalCarCost(d) {
-  return d >= 7 ? (40 * d - 50) : (d >= 3) ? (40 * d - 20) : 40 * d;
+  return d >= 7 ? 40 * d - 50 : d >= 3 ? 40 * d - 20 : 40 * d;
 }
 
 // Write function RemoveExclamationMarks which removes all exclamation marks from a given string.
@@ -291,8 +297,8 @@ function removeExclamationMarks(s) {
 
 // Solution
 const quarterOf = (month) => {
-  return month > 9 ? 4 : (month > 6) ? 3 : (month > 3) ? 2 : 1;
-}
+  return month > 9 ? 4 : month > 6 ? 3 : month > 3 ? 2 : 1;
+};
 
 // const quarterOf = m => Math.ceil(m/3);
 
@@ -308,30 +314,22 @@ const quarterOf = (month) => {
 // output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]
 
 // Solution
-function openOrSenior(data){
-  return data.map(item => (item[0] >= 55 && item[1] > 7) ? "Senior" : "Open");
+function openOrSenior(data) {
+  return data.map((item) => (item[0] >= 55 && item[1] > 7 ? "Senior" : "Open"));
 }
 
+// It's bonus time in the big city! The fatcats are rubbing their paws in anticipation... but who is going to make the most money?
+// Build a function that takes in two arguments (salary, bonus). Salary will be an integer, and bonus a boolean.
+// If bonus is true, the salary should be multiplied by 10. If bonus is false, the fatcat did not make enough money and must receive only his stated salary.
+// Return the total figure the individual will receive as a string prefixed with "£" (= "\u00A3", JS, Go, Java, Scala, and Julia), "$" (C#, C++, Ruby, Clojure, Elixir, PHP, Python, Haskell, and Lua) or "¥" (Rust).
 
+// Solution
+function bonusTime(salary, bonus) {
+  return bonus === true
+    ? "\u00A3" + (salary * 10).toString()
+    : "\u00A3" + salary.toString();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function bonusTime(salary, bonus) {
+  return bonus ? `£${10 * salary}` : `£${salary}`;
+}
