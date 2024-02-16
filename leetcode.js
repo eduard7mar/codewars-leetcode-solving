@@ -54,7 +54,6 @@ var mostWordsFound = function (sentences) {
   return count;
 };
 
-
 // You are given a 0-indexed integer array nums of even length consisting of an equal number of positive and negative integers.
 // You should rearrange the elements of nums such that the modified array follows the given conditions:
 // Every consecutive pair of integers have opposite signs.
@@ -72,19 +71,18 @@ var mostWordsFound = function (sentences) {
 // Other ways such as [1,-2,2,-5,3,-4], [3,1,2,-2,-5,-4], [-2,3,-5,1,-4,2] are incorrect because they do not satisfy one or more conditions.
 
 // Solution
-var rearrangeArray = function(nums) {
+var rearrangeArray = function (nums) {
   // Separate positive and negative numbers
-  const positiveNums = nums.filter(num => num > 0);
-  const negativeNums = nums.filter(num => num < 0);
+  const positiveNums = nums.filter((num) => num > 0);
+  const negativeNums = nums.filter((num) => num < 0);
   // Array to store the result
   const result = [];
   // Merge arrays alternately
   for (let i = 0; i < positiveNums.length; i++) {
-      result.push(positiveNums[i], negativeNums[i]);
+    result.push(positiveNums[i], negativeNums[i]);
   }
   return result;
 };
-
 
 // You are given an array of positive integers nums of length n.
 // A polygon is a closed plane figure that has at least 3 sides. The longest side of a polygon is smaller than the sum of its other sides.
@@ -99,18 +97,51 @@ var rearrangeArray = function(nums) {
 // Explanation: The only possible polygon that can be made from nums has 3 sides: 5, 5, and 5. The perimeter is 5 + 5 + 5 = 15.
 
 // Solution
-var largestPerimeter = function(nums) {
-  nums.sort((a,b)=>a-b); // Sorting the array in non-decreasing order
+var largestPerimeter = function (nums) {
+  nums.sort((a, b) => a - b); // Sorting the array in non-decreasing order
   let maxPerimeter = -1; // Initializing maxPerimeter to a non-positive value
   let curSum = 0; // Initializing the current sum to 0
-  
+
   // Iterating through the sorted array
-  for(let i = 0; i < nums.length; i++) {
-      if(i >= 2 && curSum > nums[i]) { // Checking if a valid triplet is found
-          maxPerimeter = curSum + nums[i]; // Updating maxPerimeter
-      }
-      curSum += nums[i]; // Updating the current sum
+  for (let i = 0; i < nums.length; i++) {
+    if (i >= 2 && curSum > nums[i]) {
+      // Checking if a valid triplet is found
+      maxPerimeter = curSum + nums[i]; // Updating maxPerimeter
+    }
+    curSum += nums[i]; // Updating the current sum
   }
 
   return maxPerimeter; // Returning the maximum perimeter found
-}
+};
+
+// Given an array of integers arr and an integer k. Find the least number of unique integers after removing exactly k elements.
+// Example 1:
+
+// Input: arr = [5,5,4], k = 1
+// Output: 1
+// Explanation: Remove the single 4, only 5 is left.
+// Solution
+var findLeastNumOfUniqueInts = function(arr, k) {
+  const frequency = {};
+  for (const num of arr) {
+      frequency[num] = (frequency[num] || 0) + 1;
+  }
+  
+  const uniqueNums = Object.keys(frequency).map(Number);
+  uniqueNums.sort((a, b) => frequency[a] - frequency[b]);
+  
+  let uniqueCount = uniqueNums.length;
+  let removeCount = 0;
+  
+  for (const num of uniqueNums) {
+      const frequencyOfNum = frequency[num];
+      if (k >= frequencyOfNum) {
+          k -= frequencyOfNum;
+          removeCount += 1;
+      } else {
+          break;
+      }
+  }
+  
+  return uniqueCount - removeCount;
+};
