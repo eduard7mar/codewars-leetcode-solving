@@ -89,9 +89,7 @@ var rearrangeArray = function (nums) {
 // Conversely, if you have k (k >= 3) positive real numbers a1, a2, a3, ..., ak where a1 <= a2 <= a3 <= ... <= ak and a1 + a2 + a3 + ... + ak-1 > ak, then there always exists a polygon with k sides whose lengths are a1, a2, a3, ..., ak.
 // The perimeter of a polygon is the sum of lengths of its sides.
 // Return the largest possible perimeter of a polygon whose sides can be formed from nums, or -1 if it is not possible to create a polygon.
-
 // Example 1:
-
 // Input: nums = [5,5,5]
 // Output: 15
 // Explanation: The only possible polygon that can be made from nums has 3 sides: 5, 5, and 5. The perimeter is 5 + 5 + 5 = 15.
@@ -116,7 +114,6 @@ var largestPerimeter = function (nums) {
 
 // Given an array of integers arr and an integer k. Find the least number of unique integers after removing exactly k elements.
 // Example 1:
-
 // Input: arr = [5,5,4], k = 1
 // Output: 1
 // Explanation: Remove the single 4, only 5 is left.
@@ -144,4 +141,38 @@ var findLeastNumOfUniqueInts = function(arr, k) {
   }
   
   return uniqueCount - removeCount;
+};
+
+// You are given an integer array heights representing the heights of buildings, some bricks, and some ladders.
+// You start your journey from building 0 and move to the next building by possibly using bricks or ladders.
+// While moving from building i to building i+1 (0-indexed),
+// If the current building's height is greater than or equal to the next building's height, you do not need a ladder or bricks.
+// If the current building's height is less than the next building's height, you can either use one ladder or (h[i+1] - h[i]) bricks.
+// Return the furthest building index (0-indexed) you can reach if you use the given ladders and bricks optimally.
+// Solution
+var furthestBuilding = function (heights, bricks, ladders) {
+  const n = heights.length - 1;
+  const maxPQ = new MaxPriorityQueue();
+  for (let i = 0; i < n; i++) {
+      const curDiff = heights[i + 1] - heights[i];
+      if (curDiff > 0) {
+          if (bricks < curDiff) {
+              if (ladders === 0) return i;
+              ladders -= 1;
+              if (maxPQ.isEmpty()) continue;
+              const maxDiff = maxPQ.front().element;
+              if (maxDiff > curDiff) {
+                  maxPQ.dequeue();
+                  maxPQ.enqueue(curDiff);
+                  // we'll add maxDiff amount of bricks back to current bricks
+                  // we'll use curDiff amount of bricks from current bricks
+                  bricks += (maxDiff - curDiff);
+              }
+          } else {
+              bricks -= curDiff;
+              maxPQ.enqueue(curDiff);
+          }
+      }
+  }
+  return n;
 };
