@@ -365,7 +365,7 @@ function divisors(integer) {
     }
   }
   return divisors.length > 0 ? divisors : `${integer} is prime`;
-};
+}
 
 // Don't give me five!
 // In this kata you get the start number and the end number of a region and should return the count of all numbers except numbers with a 5 in it. The start and the end number are both inclusive!
@@ -378,10 +378,10 @@ function divisors(integer) {
 // Have fun coding it and please don't forget to vote and rank this kata! :-)
 
 // Solution
-function dontGiveMeFive(start, end){
+function dontGiveMeFive(start, end) {
   let count = 0;
   for (let number = start; number <= end; number++) {
-    if (!number.toString().includes('5')) {
+    if (!number.toString().includes("5")) {
       count++;
     }
   }
@@ -389,13 +389,13 @@ function dontGiveMeFive(start, end){
 }
 
 function dontGiveMeFive(start, end) {
-  let count = 0
+  let count = 0;
   for (let i = start; i <= end; i++) {
     if (!/5/.test(i)) {
-      count++
+      count++;
     }
   }
-  return count
+  return count;
 }
 
 // Your function takes two arguments:
@@ -419,7 +419,7 @@ function twiceAsOld(dadYearsOld, sonYearsOld) {
 // Note: base is a non-negative number, factor is a positive number.
 
 // Solution
-function checkForFactor (base, factor) {
+function checkForFactor(base, factor) {
   return base % factor === 0;
 }
 
@@ -428,33 +428,49 @@ function checkForFactor (base, factor) {
 // 3 --> "Earth"
 
 // Solution
-function getPlanetName(id){
+function getPlanetName(id) {
   var name;
-  switch(id){
+  switch (id) {
     case 1:
-      name = 'Mercury';
+      name = "Mercury";
       break;
     case 2:
-      name = 'Venus';
+      name = "Venus";
       break;
     case 3:
-      name = 'Earth';
+      name = "Earth";
       break;
     case 4:
-      name = 'Mars';
+      name = "Mars";
       break;
     case 5:
-      name = 'Jupiter';
+      name = "Jupiter";
       break;
     case 6:
-      name = 'Saturn';
+      name = "Saturn";
       break;
     case 7:
-      name = 'Uranus';
+      name = "Uranus";
       break;
     case 8:
-      name = 'Neptune';
+      name = "Neptune";
       break;
   }
   return name;
+}
+
+// Create a function that accepts a string and a single character, and returns an integer of the count of occurrences the 2nd argument is found in the first one.
+// If no occurrences can be found, a count of 0 should be returned.
+// ("Hello", "o")  ==>  1
+// ("Hello", "l")  ==>  2
+// ("", "z")       ==>  0
+// str_count("Hello", 'o'); returns 1
+// str_count("Hello", 'l'); returns 2
+// str_count("", 'z'); returns 0
+
+// Solution
+function strCount(str, letter) {
+  let number = 0;
+  str.split("").map((item) => (item === letter ? number++ : number));
+  return number;
 }
