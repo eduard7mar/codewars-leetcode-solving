@@ -487,9 +487,9 @@ function strCount(str, letter) {
 // All arrays or lists will always have at least one element, so you don't need to check the length. Also, your function will always get an array or a list, you don't have to check for null, undefined or similar.
 
 // Solution
-function minMax(arr){
+function minMax(arr) {
   let min = Math.min(...arr);
-  let max = Math.max(...arr)
+  let max = Math.max(...arr);
   return [min, max];
 }
 
@@ -508,4 +508,36 @@ function stray(numbers) {
   } else {
     return arr[arr.length - 1];
   }
+}
+
+// When provided with a number between 0-9, return it in words.
+// Input :: 1
+// Output :: "One".
+// If your language supports it, try using a switch statement.
+// Solution
+function switchItUp(number){
+  switch(number) {
+        case 0:
+            return "Zero";
+        case 1:
+            return "One";
+        case 2:
+            return "Two";
+        case 3:
+            return "Three";
+        case 4:
+            return "Four";
+        case 5:
+            return "Five";
+        case 6:
+            return "Six";
+        case 7:
+            return "Seven";
+        case 8:
+            return "Eight";
+        case 9:
+            return "Nine";
+        default:
+            return "Number out of range";
+    }
 }
