@@ -515,31 +515,31 @@ function stray(numbers) {
 // Output :: "One".
 // If your language supports it, try using a switch statement.
 // Solution
-function switchItUp(number){
-  switch(number) {
-        case 0:
-            return "Zero";
-        case 1:
-            return "One";
-        case 2:
-            return "Two";
-        case 3:
-            return "Three";
-        case 4:
-            return "Four";
-        case 5:
-            return "Five";
-        case 6:
-            return "Six";
-        case 7:
-            return "Seven";
-        case 8:
-            return "Eight";
-        case 9:
-            return "Nine";
-        default:
-            return "Number out of range";
-    }
+function switchItUp(number) {
+  switch (number) {
+    case 0:
+      return "Zero";
+    case 1:
+      return "One";
+    case 2:
+      return "Two";
+    case 3:
+      return "Three";
+    case 4:
+      return "Four";
+    case 5:
+      return "Five";
+    case 6:
+      return "Six";
+    case 7:
+      return "Seven";
+    case 8:
+      return "Eight";
+    case 9:
+      return "Nine";
+    default:
+      return "Number out of range";
+  }
 }
 
 // I have a cat and a dog.
@@ -553,22 +553,22 @@ function switchItUp(number){
 // +9 cat years for second year
 // +4 cat years for each year after that
 // Solution
-var humanYearsCatYearsDogYears = function(humanYears) {
+var humanYearsCatYearsDogYears = function (humanYears) {
   let catYears, dogYears;
-  
+
   if (humanYears === 1) {
-      catYears = 15;
-      dogYears = 15;
+    catYears = 15;
+    dogYears = 15;
   } else if (humanYears === 2) {
-      catYears = 24;
-      dogYears = 24;
+    catYears = 24;
+    dogYears = 24;
   } else {
-      catYears = 24 + 4 * (humanYears - 2);
-      dogYears = 24 + 5 * (humanYears - 2);
+    catYears = 24 + 4 * (humanYears - 2);
+    dogYears = 24 + 5 * (humanYears - 2);
   }
-  
+
   return [humanYears, catYears, dogYears];
-}
+};
 
 // Write a function that checks if a given string (case insensitive) is a palindrome.
 // A palindrome is a word, number, phrase, or other sequence of symbols that reads the same backwards as forwards, such as madam or racecar.
@@ -577,9 +577,9 @@ function isPalindrome(x) {
   // Convert the string to lowercase to make the comparison case-insensitive
   x = x.toLowerCase();
   // Remove non-alphanumeric characters from the string using a regular expression
-  x = x.replace(/[^a-z0-9]/g, '');
+  x = x.replace(/[^a-z0-9]/g, "");
   // Compare the string with its reverse
-  return x === x.split('').reverse().join('');
+  return x === x.split("").reverse().join("");
 }
 
 // Write a function that takes an array of strings as an argument and returns a sorted array containing the same strings, ordered from shortest to longest.
@@ -589,6 +589,40 @@ function isPalindrome(x) {
 // ["Eyes", "Glasses", "Monocles", "Telescopes"]
 // All of the strings in the array passed to your function will be different lengths, so you will not have to decide how to order multiple strings of the same length.
 // Solution
-function sortByLength (array) {
-  return array.sort((a, b) => a.length - b.length)
+function sortByLength(array) {
+  return array.sort((a, b) => a.length - b.length);
+}
+
+// Mr. Scrooge has a sum of money 'P' that he wants to invest. Before he does, he wants to know how many years 'Y' this sum 'P' has to be kept in the bank in order for it to amount to a desired sum of money 'D'.
+// The sum is kept for 'Y' years in the bank where interest 'I' is paid yearly. After paying taxes 'T' for the year the new sum is re-invested.
+// Note to Tax: not the invested principal is taxed, but only the year's accrued interest
+// Example:
+//   Let P be the Principal = 1000.00      
+//   Let I be the Interest Rate = 0.05      
+//   Let T be the Tax Rate = 0.18      
+//   Let D be the Desired Sum = 1100.00
+// After 1st Year -->
+//   P = 1041.00
+// After 2nd Year -->
+//   P = 1083.86
+// After 3rd Year -->
+//   P = 1128.30
+// Thus Mr. Scrooge has to wait for 3 years for the initial principal to amount to the desired sum.
+// Your task is to complete the method provided and return the number of years 'Y' as a whole in order for Mr. Scrooge to get the desired sum.
+// Assumption: Assume that Desired Principal 'D' is always greater than the initial principal. However it is best to take into consideration that if Desired Principal 'D' is equal to Principal 'P' this should return 0 Years.
+// Solution
+function calculateYears(principal, interest, tax, desired) {
+  let years = 0;
+  // Loop until the principal reaches the desired amount
+  while (principal < desired) {
+      // Calculate interest earned for the year
+      const interestEarned = principal * interest;
+      // Deduct tax from the interest earned
+      const taxPaid = interestEarned * tax;
+      // Add interest earned (after tax) to the principal
+      principal += interestEarned - taxPaid;
+      // Increment the number of years
+      years++;
+  }
+  return years;
 }
