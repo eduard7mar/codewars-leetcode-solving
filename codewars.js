@@ -569,3 +569,15 @@ var humanYearsCatYearsDogYears = function(humanYears) {
   
   return [humanYears, catYears, dogYears];
 }
+
+// Write a function that checks if a given string (case insensitive) is a palindrome.
+// A palindrome is a word, number, phrase, or other sequence of symbols that reads the same backwards as forwards, such as madam or racecar.
+// Solution
+function isPalindrome(x) {
+  // Convert the string to lowercase to make the comparison case-insensitive
+  x = x.toLowerCase();
+  // Remove non-alphanumeric characters from the string using a regular expression
+  x = x.replace(/[^a-z0-9]/g, '');
+  // Compare the string with its reverse
+  return x === x.split('').reverse().join('');
+}
