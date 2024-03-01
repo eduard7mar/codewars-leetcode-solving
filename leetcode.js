@@ -445,3 +445,22 @@ function Union(parent, rank, a, b) {
   parent[b] = a;
   rank[a] += rank[b];
 }
+
+// You are given a binary string s that contains at least one '1'.
+// You have to rearrange the bits in such a way that the resulting binary number is the maximum odd binary number that can be created from this combination.
+// Return a string representing the maximum odd binary number that can be created from the given combination.
+// Note that the resulting string can have leading zeros.
+// Example 1:
+// Input: s = "010"
+// Output: "001"
+// Explanation: Because there is just one '1', it must be in the last position. So the answer is "001".
+// Solution
+var maximumOddBinaryNumber = function(s) {
+  let cnt1 = 0, cnt0 = 0;
+  for (let a of s) {
+      if (a === '1') cnt1++;
+      else if (a === '0') cnt0++;
+  }
+  let ans = '1'.repeat(cnt1 - 1) + '0'.repeat(cnt0) + '1';
+  return ans;
+};
