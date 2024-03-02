@@ -390,49 +390,51 @@ var findAllPeople = function (n, meetings, firstPerson) {
 // To go from index 0 to index 1, we can use the sequence of traversals 0 -> 2 -> 1, where we move from index 0 to index 2 because gcd(nums[0], nums[2]) = gcd(2, 6) = 2 > 1, and then move from index 2 to index 1 because gcd(nums[2], nums[1]) = gcd(6, 3) = 3 > 1.
 // To go from index 0 to index 2, we can just go directly because gcd(nums[0], nums[2]) = gcd(2, 6) = 2 > 1. Likewise, to go from index 1 to index 2, we can just go directly because gcd(nums[1], nums[2]) = gcd(3, 6) = 3 > 1.
 // Solution
-var canTraverseAllPairs = function(nums) {
+var canTraverseAllPairs = function (nums) {
   if (nums.length === 1) return true;
   const n = nums.length;
   const maxElement = Math.max(...nums);
   if (Math.min(...nums) === 1) return false;
   const factorArray = factorsCalculator(maxElement);
-  
+
   const parent = [...Array(maxElement + 1).keys()];
   const rank = Array(maxElement + 1).fill(1);
 
   for (let i = 0; i < nums.length; i++) {
-      let x = nums[i];
-      while (x > 1) {
-          const p = factorArray[x];
-          Union(parent, rank, p, nums[i]);
-          while (x % p === 0) {
-              x = x / p;
-          }
+    let x = nums[i];
+    while (x > 1) {
+      const p = factorArray[x];
+      Union(parent, rank, p, nums[i]);
+      while (x % p === 0) {
+        x = x / p;
       }
+    }
   }
 
   const p = Find(parent, nums[0]);
   for (let i = 1; i < nums.length; i++) {
-      if (Find(parent, nums[i]) !== p) return false;
+    if (Find(parent, nums[i]) !== p) return false;
   }
 
   return true;
 };
 
 function factorsCalculator(n) {
-  const dp = Array(n + 2).fill().map((_, i) => i);
+  const dp = Array(n + 2)
+    .fill()
+    .map((_, i) => i);
   for (let i = 2; i <= n; i++) {
-      if (dp[i] === i) {
-          for (let j = i * 2; j <= n; j += i) {
-              if (dp[j] === j) dp[j] = i;
-          }
+    if (dp[i] === i) {
+      for (let j = i * 2; j <= n; j += i) {
+        if (dp[j] === j) dp[j] = i;
       }
+    }
   }
   return dp;
 }
 
 function Find(parent, a) {
-  return parent[a] = parent[a] === a ? a : Find(parent, parent[a]);
+  return (parent[a] = parent[a] === a ? a : Find(parent, parent[a]));
 }
 
 function Union(parent, rank, a, b) {
@@ -440,7 +442,7 @@ function Union(parent, rank, a, b) {
   b = Find(parent, b);
   if (a === b) return;
   if (rank[a] < rank[b]) {
-      [a, b] = [b, a];
+    [a, b] = [b, a];
   }
   parent[b] = a;
   rank[a] += rank[b];
@@ -455,12 +457,31 @@ function Union(parent, rank, a, b) {
 // Output: "001"
 // Explanation: Because there is just one '1', it must be in the last position. So the answer is "001".
 // Solution
-var maximumOddBinaryNumber = function(s) {
-  let cnt1 = 0, cnt0 = 0;
+var maximumOddBinaryNumber = function (s) {
+  let cnt1 = 0,
+    cnt0 = 0;
   for (let a of s) {
-      if (a === '1') cnt1++;
-      else if (a === '0') cnt0++;
+    if (a === "1") cnt1++;
+    else if (a === "0") cnt0++;
   }
-  let ans = '1'.repeat(cnt1 - 1) + '0'.repeat(cnt0) + '1';
+  let ans = "1".repeat(cnt1 - 1) + "0".repeat(cnt0) + "1";
   return ans;
+};
+
+// Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+// Example 1:
+// Input: nums = [-4,-1,0,3,10]
+// Output: [0,1,9,16,100]
+// Explanation: After squaring, the array becomes [16,1,0,9,100].
+// After sorting, it becomes [0,1,9,16,100].
+// Example 2:
+// Input: nums = [-7,-3,2,3,11]
+// Output: [4,9,9,49,121]
+// Solution
+var sortedSquares = function (nums) {
+  for (let i = 0; i < nums.length; i++) {
+    nums[i] = nums[i] * nums[i];
+  }
+  nums.sort((a, b) => a - b);
+  return nums;
 };
