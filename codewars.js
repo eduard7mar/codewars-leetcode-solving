@@ -597,9 +597,9 @@ function sortByLength(array) {
 // The sum is kept for 'Y' years in the bank where interest 'I' is paid yearly. After paying taxes 'T' for the year the new sum is re-invested.
 // Note to Tax: not the invested principal is taxed, but only the year's accrued interest
 // Example:
-//   Let P be the Principal = 1000.00      
-//   Let I be the Interest Rate = 0.05      
-//   Let T be the Tax Rate = 0.18      
+//   Let P be the Principal = 1000.00
+//   Let I be the Interest Rate = 0.05
+//   Let T be the Tax Rate = 0.18
 //   Let D be the Desired Sum = 1100.00
 // After 1st Year -->
 //   P = 1041.00
@@ -615,14 +615,14 @@ function calculateYears(principal, interest, tax, desired) {
   let years = 0;
   // Loop until the principal reaches the desired amount
   while (principal < desired) {
-      // Calculate interest earned for the year
-      const interestEarned = principal * interest;
-      // Deduct tax from the interest earned
-      const taxPaid = interestEarned * tax;
-      // Add interest earned (after tax) to the principal
-      principal += interestEarned - taxPaid;
-      // Increment the number of years
-      years++;
+    // Calculate interest earned for the year
+    const interestEarned = principal * interest;
+    // Deduct tax from the interest earned
+    const taxPaid = interestEarned * tax;
+    // Add interest earned (after tax) to the principal
+    principal += interestEarned - taxPaid;
+    // Increment the number of years
+    years++;
   }
   return years;
 }
@@ -635,7 +635,7 @@ function calculateYears(principal, interest, tax, desired) {
 //  -3 -->   -15  ( -3 * 5¹)
 
 // Solutions
-function multiply(number){
+function multiply(number) {
   let numbLen = number.toString().replace(/\W/, "").length;
   return number * Math.pow(5, numbLen);
 }
@@ -654,20 +654,24 @@ function multiply(number) {
 
 // Solutions
 String.prototype.toAlternatingCase = function () {
-  return this.split('').map(function(char) {
-        if (char >= 'a' && char <= 'z') {
-            return char.toUpperCase();
-        } else if (char >= 'A' && char <= 'Z') {
-            return char.toLowerCase();
-        } else {
-            return char;
-        }
-    }).join('');
-}
+  return this.split("")
+    .map(function (char) {
+      if (char >= "a" && char <= "z") {
+        return char.toUpperCase();
+      } else if (char >= "A" && char <= "Z") {
+        return char.toLowerCase();
+      } else {
+        return char;
+      }
+    })
+    .join("");
+};
 
 String.prototype.toAlternatingCase = function () {
-    return this.split("").map(a => a === a.toUpperCase()? a.toLowerCase(): a.toUpperCase()).join('')
-}
+  return this.split("")
+    .map((a) => (a === a.toUpperCase() ? a.toLowerCase() : a.toUpperCase()))
+    .join("");
+};
 
 // Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.
 // If you want to know more: http://en.wikipedia.org/wiki/DNA
@@ -678,7 +682,38 @@ String.prototype.toAlternatingCase = function () {
 // "GTAT" --> "CATA"
 
 // Solution
-let pairs = {A:'T',T:'A',C:'G',G:'C'};
-const DNAStrand = dna => dna.replace(/./g, c => pairs[c]);
+let pairs = { A: "T", T: "A", C: "G", G: "C" };
+const DNAStrand = (dna) => dna.replace(/./g, (c) => pairs[c]);
 
+// Digital root is the recursive sum of all the digits in a number.
+// Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
+// Examples
+//     16  -->  1 + 6 = 7
+//    942  -->  9 + 4 + 2 = 15  -->  1 + 5 = 6
+// 132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6
+// 493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
 
+// Solutions
+function digitalRoot(n) {
+  let result = n
+    .toString()
+    .split("")
+    .reduce((a, b) => Number(a) + Number(b), 0);
+  if (result.toString().length > 1) {
+    return digitalRoot(result);
+  } else {
+    return result;
+  }
+}
+
+function digital_root(n) {
+  if (n < 10) return n;
+  return digital_root(
+    n
+      .toString()
+      .split("")
+      .reduce(function (acc, d) {
+        return acc + +d;
+      }, 0)
+  );
+}
