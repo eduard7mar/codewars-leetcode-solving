@@ -920,7 +920,7 @@ function removeUrlAnchor(url) {
 // "foefet" is an anagram of "toffee"
 // "Buckethead" is an anagram of "DeathCubeK"
 // Solution
-var isAnagram = function(test, original) {
+var isAnagram = function (test, original) {
   let word1 = test.toLowerCase().split("").sort().join("");
   let word2 = original.toLowerCase().split("").sort().join("");
   return word1 === word2;
@@ -931,7 +931,19 @@ var isAnagram = function(test, original) {
 // "CodEWaRs" --> [0,3,4,6]
 // Solution
 var capitals = function (word) {
-  return word.split('').map((char, index) => char === char.toUpperCase() && char !== char.toLowerCase() ? index : undefined).filter(index => index !== undefined);
+  return word
+    .split("")
+    .map((char, index) =>
+      char === char.toUpperCase() && char !== char.toLowerCase()
+        ? index
+        : undefined
+    )
+    .filter((index) => index !== undefined);
 };
 
-
+// You will be given an array and a limit value. You must check that all values in the array are below or equal to the limit value. If they are, return true. Else, return false.
+// You can assume all values in the array are numbers.
+// Solution
+function smallEnough(a, limit){
+  return a.filter(item => item > limit).length > 0 ? false : true;
+}
