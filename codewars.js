@@ -944,8 +944,8 @@ var capitals = function (word) {
 // You will be given an array and a limit value. You must check that all values in the array are below or equal to the limit value. If they are, return true. Else, return false.
 // You can assume all values in the array are numbers.
 // Solution
-function smallEnough(a, limit){
-  return a.filter(item => item > limit).length > 0 ? false : true;
+function smallEnough(a, limit) {
+  return a.filter((item) => item > limit).length > 0 ? false : true;
 }
 
 // Write a function named sumDigits which takes a number as input and returns the sum of the absolute value of each of the number's decimal digits.
@@ -956,7 +956,12 @@ function smallEnough(a, limit){
 // Let's assume that all numbers in the input will be integer values.
 // Solution
 function sumDigits(number) {
-  return Math.abs(number).toString().split('').reduce(function(a,b){return +a + +b}, 0);
+  return Math.abs(number)
+    .toString()
+    .split("")
+    .reduce(function (a, b) {
+      return +a + +b;
+    }, 0);
 }
 
 // The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age,  oldest age].
@@ -966,6 +971,30 @@ function sumDigits(number) {
 // [1, 5, 87, 45, 8, 8] --> [45, 87]
 // [1, 3, 10, 0]) --> [3, 10]
 // Solution
-function twoOldestAges(ages){
+function twoOldestAges(ages) {
   return ages.sort((a, b) => a - b).splice(-2);
 }
+
+// The first input array is the key to the correct answers to an exam, like ["a", "a", "b", "d"]. The second one contains a student's submitted answers.
+// The two arrays are not empty and are the same length. Return the score for this array of answers, giving +4 for each correct answer, -1 for each incorrect answer, and +0 for each blank answer, represented as an empty string (in C the space character is used).
+// If the score < 0, return 0.
+// For example:
+// checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]) → 6
+// checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]) → 7
+// checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]) → 16
+// checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
+// Solution
+function checkExam(array1, array2) {
+  let score = 0;
+   for (let i = 0; i < array1.length; i++) {
+     if (array1[i] === array2[i]) {
+       score += 4;
+     } else if (array2[i] === "") {
+       score += 0;
+     } else {
+       score -= 1;
+     }
+   }
+   return score < 0 ? 0 : score;
+ }
+ 
