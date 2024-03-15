@@ -1045,3 +1045,15 @@ function solve(s){
   s.split("").forEach(item => item === item.toUpperCase() ? uppercase++ : lowecase++);
   return uppercase > lowecase ? s.toUpperCase() : s.toLowerCase();
 }
+
+// Given a string, capitalize the letters that occupy even indexes and odd indexes separately, and return as shown below. Index 0 will be considered even.
+// For example, capitalize("abcdef") = ['AbCdEf', 'aBcDeF']. See test cases for more examples.
+// The input will be a lowercase string with no spaces.
+// Good luck!
+// Solution
+function capitalize(s){
+  let even = s.split("").map((item, i) => i % 2 === 0 ? item.toUpperCase() : item.toLowerCase()).join("");
+  let odd = s.split("").map((item, i) => i % 2 !== 0 ? item.toUpperCase() : item.toLowerCase()).join("");
+ return [even , odd];
+};
+
