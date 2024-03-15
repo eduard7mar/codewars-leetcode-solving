@@ -1023,12 +1023,9 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
     fighter2.health -= fighter1.damagePerAttack;
     fighter1.health -= fighter2.damagePerAttack;
   }
-  if (fighter1.health <= 0 && fighter2.health <= 0)
-    return firstAttacker;
-  else if (fighter1.health <= 0)
-    return fighter2.name;
-  else
-    return fighter1.name;
+  if (fighter1.health <= 0 && fighter2.health <= 0) return firstAttacker;
+  else if (fighter1.health <= 0) return fighter2.name;
+  else return fighter1.name;
 }
 
 // In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
@@ -1039,10 +1036,12 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
 // solve("CODe") = "CODE". Uppercase characters > lowecase. Change only the "e" to uppercase.
 // solve("coDE") = "code". Upper == lowercase. Change all to lowercase.
 // Solution
-function solve(s){
+function solve(s) {
   let uppercase = 0;
   let lowecase = 0;
-  s.split("").forEach(item => item === item.toUpperCase() ? uppercase++ : lowecase++);
+  s.split("").forEach((item) =>
+    item === item.toUpperCase() ? uppercase++ : lowecase++
+  );
   return uppercase > lowecase ? s.toUpperCase() : s.toLowerCase();
 }
 
@@ -1051,14 +1050,20 @@ function solve(s){
 // The input will be a lowercase string with no spaces.
 // Good luck!
 // Solution
-function capitalize(s){
-  let even = s.split("").map((item, i) => i % 2 === 0 ? item.toUpperCase() : item.toLowerCase()).join("");
-  let odd = s.split("").map((item, i) => i % 2 !== 0 ? item.toUpperCase() : item.toLowerCase()).join("");
- return [even , odd];
-};
+function capitalize(s) {
+  let even = s
+    .split("")
+    .map((item, i) => (i % 2 === 0 ? item.toUpperCase() : item.toLowerCase()))
+    .join("");
+  let odd = s
+    .split("")
+    .map((item, i) => (i % 2 !== 0 ? item.toUpperCase() : item.toLowerCase()))
+    .join("");
+  return [even, odd];
+}
 
 function flattenAndSort(array) {
-  return [].concat(...array).sort((a,b) => a - b);
+  return [].concat(...array).sort((a, b) => a - b);
 }
 
 // Given a 2D ( nested ) list ( array, vector, .. ) of size m * n, your task is to find the sum of the minimum values in each row.
@@ -1070,5 +1075,20 @@ function flattenAndSort(array) {
 // So the function should return 26 because the sum of the minimums is 1 + 5 + 20 = 26.
 // Solution
 function sumOfMinimums(arr) {
-  return arr.map(item => Math.min(...item)).reduce((a, b) => a + b);
+  return arr.map((item) => Math.min(...item)).reduce((a, b) => a + b);
+}
+
+// Create a function that takes 2 integers in form of a string as an input, and outputs the sum (also as a string):
+// Example: (Input1, Input2 -->Output)
+// "4",  "5" --> "9"
+// "34", "5" --> "39"
+// "", "" --> "0"
+// "2", "" --> "2"
+// "-5", "3" --> "-2"
+// Notes:
+// If either input is an empty string, consider it as zero.
+// Inputs and the expected output will never exceed the signed 32-bit integer limit (2^31 - 1)
+// Solution
+function sumStr(a,b) {
+  return (+a + +b).toString();
 }
