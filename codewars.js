@@ -1109,8 +1109,7 @@ function factorial(n) {
 }
 
 function factorial(n) {
-  if (n < 0 || n > 12)
-    throw new RangeError();
+  if (n < 0 || n > 12) throw new RangeError();
   return n <= 1 ? 1 : n * factorial(n - 1);
 }
 
@@ -1127,6 +1126,23 @@ function factorial(n) {
 // If, there are no JavaScript developers from Europe then your function should return 0.
 // Solution
 function countDevelopers(list) {
-  let newArray = list.filter(item => item.continent === 'Europe' && item.language === 'JavaScript');
+  let newArray = list.filter(
+    (item) => item.continent === "Europe" && item.language === "JavaScript"
+  );
   return newArray.length > 0 ? newArray.length : 0;
+}
+
+// If　a = 1, b = 2, c = 3 ... z = 26
+// Then l + o + v + e = 54
+// and f + r + i + e + n + d + s + h + i + p = 108
+// So friendship is twice as strong as love :-)
+// Your task is to write a function which calculates the value of a word based off the sum of the alphabet positions of its characters.
+// The input will always be made of only lowercase letters and will never be empty.
+// Solution
+function wordsToMarks(string) {
+  let array = [];
+  for (let i = 0; i < string.length; i++) {
+    array.push(string.charCodeAt(i) - 96);
+  }
+  return array.reduce((a, b) => a + b);
 }
