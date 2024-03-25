@@ -1173,21 +1173,32 @@ function alphabetWar(fight) {
   const leftSide = { w: 4, p: 3, b: 2, s: 1 };
   const rightSide = { m: 4, q: 3, d: 2, z: 1 };
 
-  let leftScore = 0, rightScore = 0;
+  let leftScore = 0,
+    rightScore = 0;
 
   for (let char of fight) {
-      if (leftSide[char]) {
-          leftScore += leftSide[char];
-      } else if (rightSide[char]) {
-          rightScore += rightSide[char];
-      }
+    if (leftSide[char]) {
+      leftScore += leftSide[char];
+    } else if (rightSide[char]) {
+      rightScore += rightSide[char];
+    }
   }
 
   if (leftScore > rightScore) {
-      return "Left side wins!";
+    return "Left side wins!";
   } else if (rightScore > leftScore) {
-      return "Right side wins!";
+    return "Right side wins!";
   } else {
-      return "Let's fight again!";
+    return "Let's fight again!";
   }
+}
+
+// Given an array of numbers, return a new array of length number containing the last even numbers from the original array (in the same order). The original array will be not empty and will contain at least "number" even numbers.
+// For example:
+// ([1, 2, 3, 4, 5, 6, 7, 8, 9], 3) => [4, 6, 8]
+// ([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2) => [-8, 26]
+// ([6, -25, 3, 7, 5, 5, 7, -3, 23], 1) => [6]
+// Solution
+function evenNumbers(array, number) {
+  return array.filter(item => item % 2 === 0).splice(-number);
 }
