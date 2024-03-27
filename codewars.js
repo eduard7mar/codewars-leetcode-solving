@@ -1200,5 +1200,31 @@ function alphabetWar(fight) {
 // ([6, -25, 3, 7, 5, 5, 7, -3, 23], 1) => [6]
 // Solution
 function evenNumbers(array, number) {
-  return array.filter(item => item % 2 === 0).splice(-number);
+  return array.filter((item) => item % 2 === 0).splice(-number);
 }
+
+// Complete the method which accepts an array of integers, and returns one of the following:
+// "yes, ascending" - if the numbers in the array are sorted in an ascending order
+// "yes, descending" - if the numbers in the array are sorted in a descending order
+// "no" - otherwise
+// You can assume the array will always be valid, and there will always be one correct answer.
+// Solution
+function isSortedAndHow(array) {
+  let ascending = true;
+    let descending = true;
+    for (let i = 1; i < array.length; i++) {
+        if (array[i] > array[i - 1]) {
+            descending = false;
+        } else if (array[i] < array[i - 1]) {
+            ascending = false;
+        }
+    }
+    if (ascending) {
+        return "yes, ascending";
+    } else if (descending) {
+        return "yes, descending";
+    } else {
+        return "no";
+    }
+}
+
