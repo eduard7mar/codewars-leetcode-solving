@@ -1245,3 +1245,10 @@ function predictAge(age1, age2, age3, age4, age5, age6, age7, age8) {
     Math.sqrt(arr.map((a) => a * a).reduce((b, c) => b + c)) / 2
   );
 }
+
+// Your car is old, it breaks easily. The shock absorbers are gone and you think it can handle about 15 more bumps before it dies totally.
+// Unfortunately for you, your drive is very bumpy! Given a string showing either flat road (_) or bumps (n). If you are able to reach home safely by encountering 15 bumps or less, return Woohoo!, otherwise return Car Dead
+// Solution
+function bump(x){
+  return x.split("").filter(item => item === "n").length <= 15 ? "Woohoo!" : "Car Dead";
+}
