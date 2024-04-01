@@ -1252,3 +1252,13 @@ function predictAge(age1, age2, age3, age4, age5, age6, age7, age8) {
 function bump(x){
   return x.split("").filter(item => item === "n").length <= 15 ? "Woohoo!" : "Car Dead";
 }
+
+// Given an array of integers, Find the maximum product obtained from multiplying 2 adjacent numbers in the array.
+// Solution
+function adjacentElementsProduct(array) {
+  let newArray = [];
+  for (let i = 0; i < array.length - 1; i++) {
+    newArray.push(array[i] * array[i + 1]);
+  }
+  return Math.max(...newArray)
+}
