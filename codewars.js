@@ -1249,8 +1249,10 @@ function predictAge(age1, age2, age3, age4, age5, age6, age7, age8) {
 // Your car is old, it breaks easily. The shock absorbers are gone and you think it can handle about 15 more bumps before it dies totally.
 // Unfortunately for you, your drive is very bumpy! Given a string showing either flat road (_) or bumps (n). If you are able to reach home safely by encountering 15 bumps or less, return Woohoo!, otherwise return Car Dead
 // Solution
-function bump(x){
-  return x.split("").filter(item => item === "n").length <= 15 ? "Woohoo!" : "Car Dead";
+function bump(x) {
+  return x.split("").filter((item) => item === "n").length <= 15
+    ? "Woohoo!"
+    : "Car Dead";
 }
 
 // Given an array of integers, Find the maximum product obtained from multiplying 2 adjacent numbers in the array.
@@ -1260,7 +1262,7 @@ function adjacentElementsProduct(array) {
   for (let i = 0; i < array.length - 1; i++) {
     newArray.push(array[i] * array[i + 1]);
   }
-  return Math.max(...newArray)
+  return Math.max(...newArray);
 }
 
 // Write a method that takes one argument as name and then greets that name, capitalized and ends with an exclamation point.
@@ -1268,8 +1270,10 @@ function adjacentElementsProduct(array) {
 // "riley" --> "Hello Riley!"
 // "JACK"  --> "Hello Jack!"
 // Solution
-var greet = function(name) {
-  return `Hello ${name.slice(0, 1).toUpperCase() + name.slice(1).toLowerCase()}!`
+var greet = function (name) {
+  return `Hello ${
+    name.slice(0, 1).toUpperCase() + name.slice(1).toLowerCase()
+  }!`;
 };
 
 // Return an array containing the numbers from 1 to N, where N is the parametered value.
@@ -1281,7 +1285,7 @@ var greet = function(name) {
 // Method calling example:
 // fizzbuzz(3) -->  [1, 2, "Fizz"]
 // Solution
-function fizzbuzz(n){
+function fizzbuzz(n) {
   let result = [];
   for (let i = 1; i <= n; i++) {
     if (i % 3 === 0 && i % 5 === 0) {
@@ -1297,4 +1301,35 @@ function fizzbuzz(n){
   return result;
 }
 
+// We want to know the index of the vowels in a given word, for example, there are two vowels in the word super (the second and fourth letters).
+// So given a string "super", we should return a list of [2, 4].
+// Some examples:
+// Mmmm  => []
+// Super => [2,4]
+// Apple => [1,5]
+// YoMama -> [1,2,4,6]
+// Solution
+function vowelIndices(word) {
+  let vowels = ["a", "e", "i", "o", "u", "y"];
+  let result = [];
+  let string = word.toLowerCase().split("");
+  console.log(string);
+  for (let i = 0; i < string.length; i++) {
+    for (let j = 0; j < vowels.length; j++) {
+      if (string[i] === vowels[j]) {
+        result.push(i + 1);
+      }
+    }
+  }
+  return result;
+}
 
+function vowelIndices(word) {
+  var arr = [];
+  for (var i = 0; i < word.length; i++) {
+    if (/[aeioyu]/i.test(word[i])) {
+      arr.push(i + 1);
+    }
+  }
+  return arr;
+}
