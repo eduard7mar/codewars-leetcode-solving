@@ -1349,3 +1349,25 @@ function evaporator(content, evap_per_day, threshold) {
   }
   return days;
 }
+
+// Write a function that takes a positive integer n, sums all the cubed values from 1 to n (inclusive), and returns that sum.
+// Assume that the input n will always be a positive integer.
+// Examples: (Input --> output)
+// 2 --> 9 (sum of the cubes of 1 and 2 is 1 + 8)
+// 3 --> 36 (sum of the cubes of 1, 2, and 3 is 1 + 8 + 27)
+// Solution
+function sumCubes(n) {
+  let result = [];
+  for (let i = 1; i <= n; i++) {
+    result.push(Math.pow(i, 3));
+  }
+  return result.reduce((a, b) => a + b, 0);
+}
+
+function sumCubes(n) {
+  if (n == 1) {
+    return n ** 3;
+  } else {
+    return n ** 3 + sumCubes(n - 1);
+  }
+}
