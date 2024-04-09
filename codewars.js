@@ -1420,3 +1420,11 @@ function sumTriangularNumbers(n) {
   }
   return sum;
 }
+
+// Given a mixed array of number and string representations of integers, add up the non-string integers and subtract the total of the string integers.
+// Solution
+function divCon(x){
+  let numbers = x.filter(item => typeof item === "number");
+  let strings = x.filter(item => typeof item === "string");
+  return numbers.reduce((a, b) => a + b, 0) - strings.map(item => +item).reduce((a, b) => a + b, 0);
+}
