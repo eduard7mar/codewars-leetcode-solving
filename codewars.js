@@ -1520,3 +1520,23 @@ const greetDevelopers = list => list.map(
 // The string may contain any of the 128 ASCII characters. Characters are case-sensitive, e.g. 'a' and 'A' are considered different characters.
 // Solution
 let hasUniqueChars = (str) => new Set(str).size === str.length;
+
+// You must implement a function that returns the difference between the largest and the smallest value in a given list / array (lst) received as the parameter.
+// •	lst contains integers, that means it may contain some negative numbers
+// •	if lst is empty or contains a single element, return 0
+// •	lst is not sorted
+// [1, 2, 3, 4]   //  returns 3 because 4 -   1  == 3
+// [1, 2, 3, -4]  //  returns 7 because 3 - (-4) == 7
+// Have fun!
+// Solution
+function maxDiff(list) {
+  if (list.length <= 1)  return 0;
+  let sorted = list.sort((a, b) => a - b);
+  let a = sorted[sorted.length - 1]
+  let b = sorted[0];
+  return a - b;
+};
+
+function maxDiff(list) {
+  return list.length ? Math.max(...list) - Math.min(...list) : 0;
+};
