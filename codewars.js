@@ -1584,3 +1584,10 @@ function sortMyString(S) {
   let odds = S.split("").filter((item, i) => i % 2 !== 0).join("");
   return `${evens} ${odds}`;
 }
+
+// Find the sum of the odd numbers within an array, after cubing the initial integers. 
+// The function should return undefined if any of the values aren't numbers.
+// Solution
+function cubeOdd(arr) {
+  return arr.some(item => !Number.isInteger(item)) ? undefined : arr.filter(item => item % 2 !== 0).map(item => Math.pow(item, 3)).reduce((a, b) => a + b, 0);
+}
