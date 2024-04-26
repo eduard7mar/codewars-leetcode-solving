@@ -1423,10 +1423,13 @@ function sumTriangularNumbers(n) {
 
 // Given a mixed array of number and string representations of integers, add up the non-string integers and subtract the total of the string integers.
 // Solution
-function divCon(x){
-  let numbers = x.filter(item => typeof item === "number");
-  let strings = x.filter(item => typeof item === "string");
-  return numbers.reduce((a, b) => a + b, 0) - strings.map(item => +item).reduce((a, b) => a + b, 0);
+function divCon(x) {
+  let numbers = x.filter((item) => typeof item === "number");
+  let strings = x.filter((item) => typeof item === "string");
+  return (
+    numbers.reduce((a, b) => a + b, 0) -
+    strings.map((item) => +item).reduce((a, b) => a + b, 0)
+  );
 }
 
 // In this Kata, you will be given an array of numbers in which two numbers occur once and the rest occur only twice. Your task will be to return the sum of the numbers that occur only once.
@@ -1434,13 +1437,15 @@ function divCon(x){
 // More examples in the test cases.
 // Good luck!
 // Solution
-function repeats(arr){
-  return arr.filter(v => arr.indexOf(v) === arr.lastIndexOf(v)).reduce((a,b) => a + b, 0);
-};
+function repeats(arr) {
+  return arr
+    .filter((v) => arr.indexOf(v) === arr.lastIndexOf(v))
+    .reduce((a, b) => a + b, 0);
+}
 
 // Make a function "add" that will be able to sum elements of list continuously and return a new list of sums.
 // For example:
-// add [1,2,3,4,5] == [1, 3, 6, 10, 15], because it's calculated like 
+// add [1,2,3,4,5] == [1, 3, 6, 10, 15], because it's calculated like
 // this : [1, 1 + 2, 1 + 2 + 3, 1 + 2 + 3 + 4, 1 + 2 + 3 + 4 + 5]
 // Solution
 function add(arr) {
@@ -1454,7 +1459,7 @@ function add(arr) {
 function add(arr) {
   let sum = arr[0];
   const result = [];
-  for(let i = 1; i <= arr.length; i++) {
+  for (let i = 1; i <= arr.length; i++) {
     result.push(sum);
     sum += arr[i];
   }
@@ -1476,11 +1481,13 @@ function add(arr) {
 // The input array will always be valid and formatted as in the example above.
 // Solution
 function isRubyComing(list) {
-  return list.filter(item => item.language === "Ruby").length > 0 ? true : false
+  return list.filter((item) => item.language === "Ruby").length > 0
+    ? true
+    : false;
 }
 
 function isRubyComing(list) {
-  return list.some(e => e.language === 'Ruby');
+  return list.some((e) => e.language === "Ruby");
 }
 
 // You will be given an array of objects (associative arrays in PHP, tables in COBOL) representing data about developers who have signed up to attend the next coding meetup that you are organising.
@@ -1490,7 +1497,7 @@ function isRubyComing(list) {
 // var list1 = [
 //   { firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java' },
 //   { firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python' },
-//   { firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby' } 
+//   { firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby' }
 // ];
 // your function should return the following array:
 // [
@@ -1502,19 +1509,25 @@ function isRubyComing(list) {
 //   },
 //   { firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby',
 //     greeting: 'Hi Madison, what do you like the most about Ruby?'
-//   } 
+//   }
 // ];
 // Notes:
 // The order of the properties in the objects does not matter (except in COBOL).
 // The input array will always be valid and formatted as in the example above.
 // Solution
 function greetDevelopers(list) {
-  return list.map(item => Object.assign(item, {greeting: `Hi ${item.firstName}, what do you like the most about ${item.language}?`}));
+  return list.map((item) =>
+    Object.assign(item, {
+      greeting: `Hi ${item.firstName}, what do you like the most about ${item.language}?`,
+    })
+  );
 }
 
-const greetDevelopers = list => list.map(
-  dev => ({...dev, greeting: `Hi ${dev.firstName}, what do you like the most about ${dev.language}?`})
-);
+const greetDevelopers = (list) =>
+  list.map((dev) => ({
+    ...dev,
+    greeting: `Hi ${dev.firstName}, what do you like the most about ${dev.language}?`,
+  }));
 
 // Write a program to determine if a string contains only unique characters. Return true if it does and false otherwise.
 // The string may contain any of the 128 ASCII characters. Characters are case-sensitive, e.g. 'a' and 'A' are considered different characters.
@@ -1530,16 +1543,16 @@ let hasUniqueChars = (str) => new Set(str).size === str.length;
 // Have fun!
 // Solution
 function maxDiff(list) {
-  if (list.length <= 1)  return 0;
+  if (list.length <= 1) return 0;
   let sorted = list.sort((a, b) => a - b);
-  let a = sorted[sorted.length - 1]
+  let a = sorted[sorted.length - 1];
   let b = sorted[0];
   return a - b;
-};
+}
 
 function maxDiff(list) {
   return list.length ? Math.max(...list) - Math.min(...list) : 0;
-};
+}
 
 // Task
 // You've just moved into a perfectly straight street with exactly n identical houses on either side of the road. Naturally, you would like to find out the house number of the people on the other side of the street. The street looks something like this:
@@ -1561,7 +1574,7 @@ function maxDiff(list) {
 // If you are timing out, running out of memory, or get any kind of "error", read on. Both n and address could get upto 500 billion with over 200 random tests. If you try to store the addresses of 500 billion houses in a list then you will run out of memory and the tests will crash. This is not a kata problem so please don't post an issue. Similarly if the tests don't complete within 12 seconds then you also fail.
 // To solve this, you need to think of a way to do the kata without making massive lists or huge for loops. Read the discourse for some inspiration :)
 // Solution
-function overTheRoad(address, n){
+function overTheRoad(address, n) {
   // Calculate the total number of houses
   const totalHouses = 2 * n;
   // Calculate the house number on the opposite side
@@ -1580,14 +1593,42 @@ function overTheRoad(address, n){
 // Tested strings are at least 8 characters long.
 // Solution
 function sortMyString(S) {
-  let evens = S.split("").filter((item, i) => i % 2 === 0).join("");
-  let odds = S.split("").filter((item, i) => i % 2 !== 0).join("");
+  let evens = S.split("")
+    .filter((item, i) => i % 2 === 0)
+    .join("");
+  let odds = S.split("")
+    .filter((item, i) => i % 2 !== 0)
+    .join("");
   return `${evens} ${odds}`;
 }
 
-// Find the sum of the odd numbers within an array, after cubing the initial integers. 
+// Find the sum of the odd numbers within an array, after cubing the initial integers.
 // The function should return undefined if any of the values aren't numbers.
 // Solution
 function cubeOdd(arr) {
-  return arr.some(item => !Number.isInteger(item)) ? undefined : arr.filter(item => item % 2 !== 0).map(item => Math.pow(item, 3)).reduce((a, b) => a + b, 0);
+  return arr.some((item) => !Number.isInteger(item))
+    ? undefined
+    : arr
+        .filter((item) => item % 2 !== 0)
+        .map((item) => Math.pow(item, 3))
+        .reduce((a, b) => a + b, 0);
 }
+
+// Count the number of occurrences of each character and return it as a (list of tuples) in order of appearance. For empty output return (an empty list).
+// Consult the solution set-up for the exact data structure implementation depending on your language.
+// Example:
+// orderedCount("abracadabra") == [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]]
+// Solution
+const orderedCount = function (text) {
+  const countMap = new Map();
+  const order = [];
+  for (const char of text) {
+    if (!countMap.has(char)) {
+      countMap.set(char, 0);
+      order.push(char);
+    }
+    countMap.set(char, countMap.get(char) + 1);
+  }
+  const result = order.map((char) => [char, countMap.get(char)]);
+  return result;
+};
