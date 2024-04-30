@@ -1632,3 +1632,18 @@ const orderedCount = function (text) {
   const result = order.map((char) => [char, countMap.get(char)]);
   return result;
 };
+
+// An ordered sequence of numbers from 1 to N is given. One number might have deleted from it, then the remaining numbers were mixed. Find the number that was deleted.
+// Example:
+// •	The starting array sequence is [1,2,3,4,5,6,7,8,9]
+// •	The mixed array with one deleted number is [3,2,4,6,7,8,1,9]
+// •	Your function should return the int 5.
+// If no number was deleted from the starting array, your function should return the int 0.
+// Note: N may be 1 or less (in the latter case, the first array will be []).
+// Solution
+function findDeletedNumber(arr, mixArr) {
+  const sum1 = arr.reduce((acc, cur) => acc + cur, 0);
+  const sum2 = mixArr.reduce((acc, cur) => acc + cur, 0);
+  return sum1 - sum2;
+}
+
