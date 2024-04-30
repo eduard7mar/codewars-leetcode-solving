@@ -1647,3 +1647,13 @@ function findDeletedNumber(arr, mixArr) {
   return sum1 - sum2;
 }
 
+// Write a function reverse which reverses a list (or in clojure's case, any list-like data structure)
+// (the dedicated builtin(s) functionalities are deactivated)
+// Solution
+reverse = function (array) {
+  var newArr = [];
+  for (var i = array.length - 1; i >= 0; i--) {
+    newArr.push(array[i]);
+  }
+  return newArr;
+};
