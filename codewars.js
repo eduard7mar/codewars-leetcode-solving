@@ -1677,3 +1677,7 @@ function getFirstPython(list) {
   return result.length > 0 ? `${result[0].firstName}, ${result[0].country}` : 'There will be no Python developers';
 }
 
+function getFirstPython(list) {
+  const dev = list.find(x => x.language === "Python")
+  return dev ? `${dev.firstName}, ${dev.country}` : "There will be no Python developers"
+}
