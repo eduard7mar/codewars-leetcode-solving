@@ -1718,3 +1718,14 @@ function tidyNumber(n) {
 function spacify(str) {
   return str.split("").join(" ");
 }
+
+// Definition
+// A number is called Automorphic number if and only if its square ends in the same digits as the number itself.
+// Task
+// Given a number determine if it Automorphic or not.
+// Solution
+function automorphic(n){
+  let numberLength = n.toString().split("").length;
+  let firstLastNumber = +Math.pow(n, 2).toString().split("").splice(-numberLength).join("");
+  return firstLastNumber === n ? "Automorphic" : "Not!!";
+}
