@@ -1711,3 +1711,10 @@ function tidyNumber(n) {
   let sorted = +n.toString().split("").sort().join("");
   return n === sorted;
 }
+
+// Modify the spacify function so that it returns the given string with spaces inserted between each character.
+// spacify("hello world") // returns "h e l l o   w o r l d"
+// Solution
+function spacify(str) {
+  return str.split("").join(" ");
+}
