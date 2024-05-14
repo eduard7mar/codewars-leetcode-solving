@@ -1729,3 +1729,5 @@ function automorphic(n){
   let firstLastNumber = +Math.pow(n, 2).toString().split("").splice(-numberLength).join("");
   return firstLastNumber === n ? "Automorphic" : "Not!!";
 }
+
+const automorphic = n => String(n*n).endsWith(String(n)) ? "Automorphic" : "Not!!";
