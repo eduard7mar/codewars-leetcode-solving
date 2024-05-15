@@ -1763,3 +1763,32 @@ function strong(n) {
   }
   return n == sum ? "STRONG!!!!" : "Not Strong !!";
 }
+
+// Your task is to add up letters to one letter.
+// The function will be given a variable amount of arguments, each one being a letter to add.
+// Notes:
+// Letters will always be lowercase.
+// Letters can overflow (see second to last example of the description)
+// If no letters are given, the function should return 'z'
+// Examples:
+// addLetters('a', 'b', 'c') = 'f'
+// addLetters('a', 'b') = 'c'
+// addLetters('z') = 'z'
+// addLetters('z', 'a') = 'a'
+// addLetters('y', 'c', 'b') = 'd' // notice the letters overflowing
+// addLetters() = 'z'
+// Solution
+function addLetters(...letters) {
+  if (letters.length === 0) {
+    return "z";
+  }
+  const positions = letters.map(
+    (letter) => letter.charCodeAt(0) - "a".charCodeAt(0) + 1
+  );
+  const sum = positions.reduce((total, current) => total + current, 0);
+  const resultPosition = ((sum - 1) % 26) + 1;
+  const resultLetter = String.fromCharCode(
+    "a".charCodeAt(0) + resultPosition - 1
+  );
+  return resultLetter;
+}
