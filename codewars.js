@@ -1792,3 +1792,17 @@ function addLetters(...letters) {
   );
   return resultLetter;
 }
+
+// Task
+// Given an array/list [] of n integers , find maximum triplet sum in the array Without duplications .
+// ________________________________________
+// Notes :
+// Array/list size is at least 3 .
+// Array/list numbers could be a mixture of positives , negatives and zeros .
+// Repetition of numbers in the array/list could occur , So (duplications are not included when summing).
+// Solution
+function maxTriSum(numbers) {
+  let uniqueValues = [...new Set(numbers)];
+  uniqueValues.sort((a, b) => b - a);
+  return uniqueValues[0] + uniqueValues[1] + uniqueValues[2];
+}
