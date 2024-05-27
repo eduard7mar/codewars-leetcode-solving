@@ -1967,5 +1967,40 @@ function growingPlant(upSpeed, downSpeed, desiredHeight) {
 // Write function alternateCase which switch every letter in string from upper to lower and from lower to upper. E.g: Hello World -> hELLO wORLD
 // Solution
 function alternateCase(s) {
-  return s.split("").map(item => item === item.toUpperCase() ? item.toLowerCase() : item.toUpperCase()).join("");
+  return s
+    .split("")
+    .map((item) =>
+      item === item.toUpperCase() ? item.toLowerCase() : item.toUpperCase()
+    )
+    .join("");
 }
+
+// In this Kata, you will be given a string and your task will be to return a list of ints detailing the count of uppercase letters, lowercase, numbers and special characters, as follows.
+// Solve("*'&ABCDabcde12345") = [4,5,5,3].
+// --the order is: uppercase letters, lowercase, numbers and special characters.
+// Solution
+function solve(s) {
+  let counts = [0, 0, 0, 0]; // Array to hold counts of uppercase, lowercase, numbers, special characters
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (char >= "A" && char <= "Z") {
+      counts[0]++; // Uppercase letters
+    } else if (char >= "a" && char <= "z") {
+      counts[1]++; // Lowercase letters
+    } else if (char >= "0" && char <= "9") {
+      counts[2]++; // Numbers
+    } else {
+      counts[3]++; // Special characters
+    }
+  }
+  return counts;
+}
+
+const solve = x => {
+  let u = x.match(/[A-Z]/g)||[]
+  let d = x.match(/[a-z]/g)||[]
+  let n = x.match(/[0-9]/g)||[]
+  let s = x.match(/[^A-Z0-9]/gi)||[]
+  return [u.length, d.length, n.length, s.length]
+}
+
