@@ -2004,3 +2004,31 @@ const solve = x => {
   return [u.length, d.length, n.length, s.length]
 }
 
+// Task
+// Given an array/list [] of n integers , Separate The even numbers from the odds , or Separate the men from the boys  
+// ________________________________________
+// Notes
+// •	Return an array/list where Even numbers come first then odds
+// •	Since , Men are stronger than Boys , Then Even numbers in ascending order While odds in descending .
+// •	Array/list size is at least 4 .
+// •	Array/list numbers could be a mixture of positives , negatives .
+// •	Have no fear , It is guaranteed that no Zeroes will exists . 
+// •	Repetition of numbers in the array/list could occur , So (duplications are not included when separating).
+// ________________________________________
+// Input >> Output Examples:
+// menFromBoys ({7, 3 , 14 , 17}) ==> return ({14, 17, 7, 3}) 
+// Explanation:
+// Since , { 14 } is the even number here , So it came first , then the odds in descending order {17 , 7 , 3} .
+// ________________________________________
+// menFromBoys ({-94, -99 , -100 , -99 , -96 , -99 }) ==> return ({-100 , -96 , -94 , -99})
+// Explanation:
+// •	Since , { -100, -96 , -94 } is the even numbers here , So it came first in *ascending order *, then the odds in descending order { -99 }
+// •	Since , (Duplications are not included when separating) , then you can see only one (-99) was appeared 
+// Solution
+function menFromBoys(arr){
+  let set = new Set(arr);
+  let newArr = [...set];
+  let even = newArr.filter(item => item % 2 === 0).sort((a, b) => a - b);
+  let odd = newArr.filter(item => item % 2 !== 0).sort((a, b) => b - a);
+  return [...even, ...odd];
+}
