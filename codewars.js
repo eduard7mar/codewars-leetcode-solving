@@ -1996,44 +1996,44 @@ function solve(s) {
   return counts;
 }
 
-const solve = x => {
-  let u = x.match(/[A-Z]/g)||[]
-  let d = x.match(/[a-z]/g)||[]
-  let n = x.match(/[0-9]/g)||[]
-  let s = x.match(/[^A-Z0-9]/gi)||[]
-  return [u.length, d.length, n.length, s.length]
-}
+const solve = (x) => {
+  let u = x.match(/[A-Z]/g) || [];
+  let d = x.match(/[a-z]/g) || [];
+  let n = x.match(/[0-9]/g) || [];
+  let s = x.match(/[^A-Z0-9]/gi) || [];
+  return [u.length, d.length, n.length, s.length];
+};
 
 // Task
-// Given an array/list [] of n integers , Separate The even numbers from the odds , or Separate the men from the boys  
+// Given an array/list [] of n integers , Separate The even numbers from the odds , or Separate the men from the boys
 // ________________________________________
 // Notes
 // •	Return an array/list where Even numbers come first then odds
 // •	Since , Men are stronger than Boys , Then Even numbers in ascending order While odds in descending .
 // •	Array/list size is at least 4 .
 // •	Array/list numbers could be a mixture of positives , negatives .
-// •	Have no fear , It is guaranteed that no Zeroes will exists . 
+// •	Have no fear , It is guaranteed that no Zeroes will exists .
 // •	Repetition of numbers in the array/list could occur , So (duplications are not included when separating).
 // ________________________________________
 // Input >> Output Examples:
-// menFromBoys ({7, 3 , 14 , 17}) ==> return ({14, 17, 7, 3}) 
+// menFromBoys ({7, 3 , 14 , 17}) ==> return ({14, 17, 7, 3})
 // Explanation:
 // Since , { 14 } is the even number here , So it came first , then the odds in descending order {17 , 7 , 3} .
 // ________________________________________
 // menFromBoys ({-94, -99 , -100 , -99 , -96 , -99 }) ==> return ({-100 , -96 , -94 , -99})
 // Explanation:
 // •	Since , { -100, -96 , -94 } is the even numbers here , So it came first in *ascending order *, then the odds in descending order { -99 }
-// •	Since , (Duplications are not included when separating) , then you can see only one (-99) was appeared 
+// •	Since , (Duplications are not included when separating) , then you can see only one (-99) was appeared
 // Solution
-function menFromBoys(arr){
+function menFromBoys(arr) {
   let set = new Set(arr);
   let newArr = [...set];
-  let even = newArr.filter(item => item % 2 === 0).sort((a, b) => a - b);
-  let odd = newArr.filter(item => item % 2 !== 0).sort((a, b) => b - a);
+  let even = newArr.filter((item) => item % 2 === 0).sort((a, b) => a - b);
+  let odd = newArr.filter((item) => item % 2 !== 0).sort((a, b) => b - a);
   return [...even, ...odd];
 }
 
-// Our fruit guy has a bag of fruit (represented as an array of strings) where some fruits are rotten. He wants to replace all the rotten pieces of fruit with fresh ones. For example, given ["apple","rottenBanana","apple"] 
+// Our fruit guy has a bag of fruit (represented as an array of strings) where some fruits are rotten. He wants to replace all the rotten pieces of fruit with fresh ones. For example, given ["apple","rottenBanana","apple"]
 //the replaced array should be ["apple","banana","apple"]. Your task is to implement a method that accepts an array of strings containing fruits should returns an array of strings where all the rotten fruits are replaced by good ones.
 // Notes
 // •	If the array is null/nil/None or empty you should return empty array ([]).
@@ -2042,12 +2042,66 @@ function menFromBoys(arr){
 // Solution
 function removeRotten(bagOfFruits) {
   if (bagOfFruits === null || bagOfFruits === undefined) {
-    return []
-  };
-  let result = bagOfFruits.map(item => item.startsWith("rotten") ? item.replace("rotten", "").toLowerCase() : item);
+    return [];
+  }
+  let result = bagOfFruits.map((item) =>
+    item.startsWith("rotten") ? item.replace("rotten", "").toLowerCase() : item
+  );
   return result;
 }
 
-function removeRotten(arr){
-  return arr ? arr.map(x=>x.replace('rotten', '').toLowerCase()) : [] ;
+function removeRotten(arr) {
+  return arr ? arr.map((x) => x.replace("rotten", "").toLowerCase()) : [];
+}
+
+// Write a class Block that creates a block (Duh..)
+// Requirements
+// The constructor should take an array as an argument, this will contain 3 integers of the form [width, length, height] from which the Block should be created.
+// Define these methods:
+// `getWidth()` return the width of the `Block`
+// `getLength()` return the length of the `Block`
+// `getHeight()` return the height of the `Block`
+// `getVolume()` return the volume of the `Block`
+// `getSurfaceArea()` return the surface area of the `Block`
+// Examples
+//     let b = new Block([2,4,6]) -> creates a `Block` object with a width of `2` a length of `4` and a height of `6`
+//     b.getWidth() // -> 2
+//     b.getLength() // -> 4
+//     b.getHeight() // -> 6
+//     b.getVolume() // -> 48
+//     b.getSurfaceArea() // -> 88
+// Note: no error checking is needed
+// Any feedback would be much appreciated
+// Solution
+class Block {
+  constructor(data) {
+    this.width = data[0];
+    this.length = data[1];
+    this.height = data[2];
+  }
+
+  getWidth() {
+    return this.width;
+  }
+
+  getLength() {
+    return this.length;
+  }
+
+  getHeight() {
+    return this.height;
+  }
+
+  getVolume() {
+    return this.width * this.length * this.height;
+  }
+
+  getSurfaceArea() {
+    return (
+      2 *
+      (this.width * this.length +
+        this.length * this.height +
+        this.height * this.width)
+    );
+  }
 }
