@@ -2114,5 +2114,30 @@ class Block {
 // "Why isn't my code working?"  -->  "W  H  Y  I  S  N  '  T  M  Y  C  O  D  E  W  O  R  K  I  N  G  ?"
 // Solution
 function vaporcode(string) {
-  return string.replaceAll(" ", "").split("").map(item => item.toUpperCase()).join("  ");
+  return string
+    .replaceAll(" ", "")
+    .split("")
+    .map((item) => item.toUpperCase())
+    .join("  ");
+}
+
+// In this Kata your task will be to return the count of pairs that have consecutive numbers as follows:
+// pairs([1,2,5,8,-4,-3,7,6,5]) = 3
+// The pairs are selected as follows [(1,2),(5,8),(-4,-3),(7,6),5]
+// --the first pair is (1,2) and the numbers in the pair are consecutive; Count = 1
+// --the second pair is (5,8) and are not consecutive
+// --the third pair is (-4,-3), consecutive. Count = 2
+// --the fourth pair is (7,6), also consecutive. Count = 3.
+// --the last digit has no pair, so we ignore.
+// More examples in the test cases.
+// Good luck!
+// Solution
+function pairs(ar) {
+  let count = 0;
+  for (let i = 0; i < ar.length - 1; i += 2) {
+    if (Math.abs(ar[i] - ar[i + 1]) === 1) {
+      count++;
+    }
+  }
+  return count;
 }
