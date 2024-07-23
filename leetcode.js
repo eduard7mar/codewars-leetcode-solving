@@ -547,19 +547,19 @@ var getCommon = function (nums1, nums2) {
 // Solution
 function squares(x, n) {
   if (n <= 0) return [];
-  
+
   let result = [x];
   for (let i = 1; i < n; i++) {
-    result.push((result[i - 1] ** 2))
+    result.push(result[i - 1] ** 2);
   }
   return result;
 }
 
 function squares(x, n) {
   var ret = [];
-  for(var i=0; i<n; i++){
+  for (var i = 0; i < n; i++) {
     ret.push(x);
-    x*= x;
+    x *= x;
   }
   return ret;
 }
@@ -568,7 +568,7 @@ function squares(x, n) {
 // Return the array in the form [x1,y1,x2,y2,...,xn,yn].
 // Example 1:
 // Input: nums = [2,5,1,3,4,7], n = 3
-// Output: [2,3,5,4,1,7] 
+// Output: [2,3,5,4,1,7]
 // Explanation: Since x1=2, x2=5, x3=1, y1=3, y2=4, y3=7 then the answer is [2,3,5,4,1,7].
 // Example 2:
 // Input: nums = [1,2,3,4,4,3,2,1], n = 4
@@ -588,4 +588,18 @@ function shuffle(nums, n) {
     result.push(nums[i + n]);
   }
   return result;
+}
+
+// In this Kata, you will be given an array of integers whose elements have both a negative and a positive value, except for one integer that is either only negative or only positive. Your task will be to find that integer.
+// Examples:
+// [1, -1, 2, -2, 3] => 3
+// 3 has no matching negative appearance
+// [-3, 1, 2, 3, -1, -4, -2] => -4
+// -4 has no matching positive appearance
+// [1, -1, 2, -2, 3, 3] => 3
+// (the only-positive or only-negative integer may appear more than once)
+// Good luck!
+// Solution
+function solve(arr) {
+  return arr.find((item) => !arr.includes(-item));
 }
