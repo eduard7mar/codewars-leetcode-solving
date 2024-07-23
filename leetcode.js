@@ -603,3 +603,24 @@ function shuffle(nums, n) {
 function solve(arr) {
   return arr.find((item) => !arr.includes(-item));
 }
+
+// Given a string and an array of integers representing indices, capitalize all letters at the given indices.
+// For example:
+// •	capitalize("abcdef",[1,2,5]) = "aBCdeF"
+// •	capitalize("abcdef",[1,2,5,100]) = "aBCdeF". There is no index 100.
+// The input will be a lowercase string with no spaces and an array of digits.
+// Good luck!
+// Solution
+function capitalize(s, arr) {
+  let res = s.split("");
+
+  for (let i = 0; i < arr.length; i++) {
+    let index = arr[i];
+
+    if (index >= 0 && index < res.length) {
+      res[index] = res[index].toUpperCase();
+    }
+  }
+
+  return res.join("");
+}
