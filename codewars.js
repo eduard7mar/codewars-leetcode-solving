@@ -2468,3 +2468,24 @@ function spot(s1, s2) {
   });
   return differences;
 }
+
+// Given a string, return true if the first instance of "x" in the string is immediately followed by the string "xx".
+// "abraxxxas" → true
+// "xoxotrololololololoxxx" → false
+// "softX kitty, warm kitty, xxxxx" → true
+// "softx kitty, warm kitty, xxxxx" → false
+// Note :
+// capital X's do not count as an occurrence of "x".
+// if there are no "x"'s then return false
+// Solution
+function tripleX(str) {
+  let firstX = str.indexOf("x");
+
+  if (firstX === -1) {
+    return false;
+  }
+
+  return str.slice(firstX, firstX + 3) === "xxx";
+}
+
+const tripleX = (str) => /^[^x]*xxx/.test(str);
