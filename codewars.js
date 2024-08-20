@@ -2535,3 +2535,24 @@ var splitInParts = function (s, partLength) {
   }
   return result.join(" ");
 };
+
+// Some people just have a first name; some people have first and last names and some people have first, middle and last names.
+// You task is to initialize the middle names (if there is any).
+// Examples
+// 'Jack Ryan'                   => 'Jack Ryan'
+// 'Lois Mary Lane'              => 'Lois M. Lane'
+// 'Dimitri'                     => 'Dimitri'
+// 'Alice Betty Catherine Davis' => 'Alice B. C. Davis'
+// Solution
+function initializeNames(name) {
+  let array = name.split(" ");
+  if (array.length < 3) {
+    return name;
+  }
+
+  for (let i = 1; i < array.length - 1; i++) {
+    array[i] = array[i][0] + ".";
+  }
+
+  return array.join(" ");
+}
