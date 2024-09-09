@@ -2629,3 +2629,18 @@ function insertDash(num) {
 function insertDash(num) {
   return num.toString().replace(/[13579](?=[13579])/g, "$&-");
 }
+
+// In this kata, you will do addition and subtraction on a given string. The return value must be also a string.
+// Note: the input will not be empty.
+// Examples
+// "1plus2plus3plus4"  --> "10"
+// "1plus2plus3minus4" -->  "2"
+// Solution
+function calculate(str) {
+  return str
+    .replace(/plus/g, "+")
+    .replace(/minus/g, "-")
+    .split(/(?=[+-])/g)
+    .reduce((acc, num) => acc + Number(num), 0)
+    .toString();
+}
