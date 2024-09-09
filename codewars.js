@@ -2665,3 +2665,36 @@ function divisibleByThree(str) {
     ? true
     : false;
 }
+
+// 345. Reverse Vowels of a String
+// Given a string s, reverse only all the vowels in the string and return it.
+// The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+// Example 1:
+// Input: s = "hello"
+// Output: "holle"
+// Example 2:
+// Input: s = "leetcode"
+// Output: "leotcede"
+// Constraints:
+// •	1 <= s.length <= 3 * 105
+// •	s consist of printable ASCII characters.
+// Solution
+var reverseVowels = function (s) {
+  const vowels = "aeiouAEIOU";
+  const chars = s.split("");
+  const vowelList = [];
+
+  for (let char of chars) {
+    if (vowels.includes(char)) {
+      vowelList.push(char);
+    }
+  }
+
+  for (let i = 0; i < chars.length; i++) {
+    if (vowels.includes(chars[i])) {
+      chars[i] = vowelList.pop();
+    }
+  }
+
+  return chars.join("");
+};
