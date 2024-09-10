@@ -2744,3 +2744,12 @@ function getStrings(city) {
 
   return result.join(",");
 }
+
+function getStrings(city) {
+  return [...new Set(city.toLowerCase().replace(/[^a-z]/g, ""))]
+    .map(
+      (char) =>
+        `${char}:${"*".repeat(city.toLowerCase().split(char).length - 1)}`
+    )
+    .join(",");
+}
