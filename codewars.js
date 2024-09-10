@@ -2701,4 +2701,15 @@ var reverseVowels = function (s) {
 
 var reverseVowels = function (s) {
   const vow = s.match(/[aeiou]/gi);
-  return s.replace(/[aeiou]/gi, (el) => vow.pop());};
+  return s.replace(/[aeiou]/gi, (el) => vow.pop());
+};
+
+// Covfefe
+// Your are given a string. You must replace any occurence of the sequence coverage by covfefe, however, if you don't find the word coverage in the string, you must add covfefe at the end of the string with a leading space.
+// For the languages where the string is mutable (such as ruby), don't modify the given string, otherwise this will break the test cases.
+// Solution
+function covfefe(str) {
+  return str.includes("coverage")
+    ? str.replace(/coverage/g, "covfefe")
+    : str + " covfefe";
+}
