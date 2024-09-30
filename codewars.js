@@ -2814,3 +2814,18 @@ function flyBy(lamps, drone) {
     .map((lamp, index) => (index < dronePathLength ? "o" : "x"))
     .join("");
 }
+
+// Definition
+// Disarium number is the number that The sum of its digits powered with their respective positions is equal to the number itself.
+// Task
+// Given a number, Find if it is Disarium or not .
+// Solution
+function disariumNumber(n) {
+  return n
+    .toString()
+    .split("")
+    .map((item, i) => Math.pow(item, i + 1))
+    .reduce((a, b) => a + b) === n
+    ? "Disarium !!"
+    : "Not !!";
+}
