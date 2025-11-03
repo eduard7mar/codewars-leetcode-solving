@@ -3487,3 +3487,17 @@ function warnTheSheep(queue) {
     ? "Pls go away and stop eating my sheep"
     : `Oi! Sheep number ${sheepInDanger}! You are about to be eaten by a wolf!`;
 }
+
+// HELP! Jason can't find his textbook! It is two days before the test date, and Jason's textbooks are all out of order!
+// Help him sort a list (ArrayList in java) full of textbooks by subject, so he can study before the test.
+// The sorting should NOT be case sensitive
+// Solution
+function sorter(textbooks) {
+  return [...textbooks].sort((a, b) => {
+    const A = a.toLowerCase();
+    const B = b.toLowerCase();
+    if (A < B) return -1;
+    if (A > B) return 1;
+    return 0;
+  });
+}
